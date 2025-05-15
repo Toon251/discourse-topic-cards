@@ -8,6 +8,14 @@ const TopicOp = <template>
       <span class="username">
         {{@topic.creator.username}}
       </span>
+      <span>
+        เหรียญ
+        {{#each @topic.creator.badges as |badge|}}
+          <span class="badge">
+            <i class="fa {{badge.icon}}"></i> {{badge.name}}
+          </span>
+        {{/each}}
+      </span>
     </UserLink>
   </div>
 </template>;
