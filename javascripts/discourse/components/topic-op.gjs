@@ -8,9 +8,6 @@ const TopicOp = <template>
       <span class="username">
         {{@topic.creator.username}}
       </span>
-      <span>
-      ทดสอบ
-      </span>
     </UserLink>
   </div>
 </template>;
