@@ -94,7 +94,9 @@ export default apiInitializer("1.39.0", (api) => {
   );
 
   api.decorateWidget("poster-name:after", (helper) => {
+
     const user = helper.attrs.user;
+    console.log(user);
 
     // ดึง username ของ Topic Creator
     if (user) {
