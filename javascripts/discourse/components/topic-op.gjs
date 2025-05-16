@@ -1,7 +1,7 @@
 import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 
-export default class LikeToggle extends Component {
+export default class TopicOp extends Component {
   @tracked name = 'Hello'; // ค่าเริ่มต้นที่สามารถเปลี่ยนแปลงได้
 
   updateName(newName) {
