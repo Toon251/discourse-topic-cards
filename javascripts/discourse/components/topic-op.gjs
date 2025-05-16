@@ -1,21 +1,4 @@
 
-import Component from "@glimmer/component";
-import { inject as service } from "@ember/service";
-
-export default class TopicOpComponent extends Component {
-  @service store; // Service เชื่อมกับ Ember Data
-
-  /**
-   * Method to fetch topic creator's badges dynamically if not preloaded
-   */
-  async fetchUserBadges(userId) {
-    if (!this.args.topic.creator.badges || this.args.topic.creator.badges.length === 0) {
-      const user = await this.store.findRecord("user", userId, { include: "badges" });
-      return user.badges;
-    }
-    return this.args.topic.creator.badges;
-  }
-}
 
 
 import UserLink from "discourse/components/user-link";
