@@ -1,15 +1,7 @@
-import Component from "@glimmer/component";
-import { tracked } from "@glimmer/tracking";
+
 import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 
-export default class TopicOp extends Component {
-  @tracked name = 'Hello'; // ค่าเริ่มต้นที่สามารถเปลี่ยนแปลงได้
-
-  updateName(newName) {
-    this.name = newName; // อัปเดตค่า name
-  }
-}
 
 
 const TopicOp = <template>
@@ -20,7 +12,6 @@ const TopicOp = <template>
         {{@topic.creator.username}}
       </span>
       <span>
-        {{this.name}}
         {{#each @topic.creator.badges as |badge|}}
           <span class="badge">
             <i class="fa {{badge.icon}}"></i> {{badge.name}}
