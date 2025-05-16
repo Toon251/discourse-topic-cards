@@ -3,23 +3,28 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
 export default class TopicOpComponent extends Component {
-  @service store;
-  @tracked badges = [];
-
+  @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
+  
   constructor() {
     super(...arguments);
-    this.loadBadges(); // Load badges initially
+    this.loadBadges(); // โหลด badges เมื่อ component ถูกเรียก
   }
 
+  /**
+   * Fetch badges for the topic creator via API
+   */
   async loadBadges() {
-    this.badges = await this.fetchUserBadges(this.args.topic.creator.id);
-  }
-
-  async fetchUserBadges(userId) {
-    if (!this.args.topic.creator.badges || this.args.topic.creator.badges.length === 0) {
-      const user = await this.store.findRecord("user", userId, { include: "badges" });
-      return user.badges.toArray(); // Convert Ember Data Relational Model to Array
+    try {
+      const userId = this.args.topic.creator.id; // Assume user ID is available
+      const response = await fetch(`/api/users/${userId}/badges`); // Replace with your actual API endpoint
+      if (!response.ok) {
+        throw new Error(`Failed to fetch badges: ${response.status}`);
+      }
+      const data = await response.json();
+      this.badges = data.badges; // Assuming `badges` is in the response structure
+    } catch (error) {
+      console.error("Error fetching badges:", error);
+      this.badges = []; // Fallback in case of errors
     }
-    return this.args.topic.creator.badges;
   }
 }

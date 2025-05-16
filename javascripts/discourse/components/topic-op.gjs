@@ -14,11 +14,15 @@ const TopicOp = <template>
         {{@topic.creator.username}}
       </span>
       <span>
-        {{#each @topic.creator.badges as |badge|}}
-          <span class="badge">
-            <i class="fa {{badge.icon}}"></i> {{badge.name}}
-          </span>
-        {{/each}}
+        {{#if this.badges.length}}
+          {{#each this.badges as |badge|}}
+            <span class="badge">
+              <i class="fa {{badge.icon}}"></i> {{badge.name}}
+            </span>
+          {{/each}}
+        {{else}}
+          <span class="no-badges">No badges available</span>
+        {{/if}}
       </span>
     </UserLink>
   </div>
