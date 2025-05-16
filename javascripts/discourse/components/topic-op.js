@@ -15,8 +15,8 @@ export default class TopicOpComponent extends Component {
    */
   async loadBadges() {
     try {
-      const userId = this.args.topic.creator.id; // Assume user ID is available
-      const response = await fetch(`/api/users/${userId}/badges`); // Replace with your actual API endpoint
+      const username = this.args.topic.creator.username; // Assume user ID is available
+      const response = await fetch(`/user-badges/${username}.json`); // Replace with your actual API endpoint
       if (!response.ok) {
         throw new Error(`Failed to fetch badges: ${response.status}`);
       }
