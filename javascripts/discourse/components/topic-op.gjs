@@ -1,3 +1,5 @@
+import Component from "@glimmer/component";
+import { tracked } from "@glimmer/tracking";
 import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 
