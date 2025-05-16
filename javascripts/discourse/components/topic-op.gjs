@@ -39,16 +39,17 @@ export default class TopicOpComponent extends Component {
         <span class="username">
           {{@topic.creator.username}}
         </span>
-        <span>
-          Badges : 
+        <span> 
           {{#if this.badges.length}}
             {{#each this.badges as |badge|}}
-              <span class="badge">
-                <i class="fa {{badge.icon}}"></i> {{badge.name}}
-              </span>
+              {{#if badge.allow_title}}
+                <span title="{{badge.name}}" data-badge-name="{{badge.name}}" class="user-badge">
+                    <i class="fa {{badge.icon}}"></i>
+                    <span class="badge-display-name">{{badge.name}}</span>
+                    
+                </span>
+              {{/if}}
             {{/each}}
-          {{else}}
-            <span class="no-badges">No badges available</span>
           {{/if}}
         </span>
       </UserLink>
