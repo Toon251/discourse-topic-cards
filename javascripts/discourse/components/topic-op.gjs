@@ -43,10 +43,8 @@ export default class TopicOpComponent extends Component {
           {{#if this.badges.length}}
             {{#each this.badges as |badge|}}
               {{#if badge.allow_title}}
-                <span title="{{badge.name}}" data-badge-name="{{badge.name}}" class="user-badge">
-                    <i class="fa {{badge.icon}}"></i>
+                <span class="user-badge">
                     <span class="badge-display-name">{{badge.name}}</span>
-                    
                 </span>
               {{/if}}
             {{/each}}
