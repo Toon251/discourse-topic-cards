@@ -31,5 +31,18 @@ export default class TopicOpComponent extends Component {
       this.badges = []; // Fallback in case of errors
     }
   }
-}
 
+  <template>
+    <div class="topic-card__op">
+      <UserLink @user={{@topic.creator}}>
+        {{avatar @topic.creator imageSize="tiny"}}
+        <span class="username">
+          {{@topic.creator.username}}
+        </span>
+        <span>
+          Test
+        </span>
+      </UserLink>
+    </div>
+  </template>
+}
