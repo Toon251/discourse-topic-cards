@@ -24,6 +24,7 @@ export default class TopicOpComponent extends Component {
         throw new Error(`Failed to fetch badges: ${response.status}`);
       }
       const data = await response.json();
+      console.log(data.badges)
       this.badges = data.badges; // Assuming `badges` is in the response structure
     } catch (error) {
       console.error("Error fetching badges:", error);
@@ -41,15 +42,7 @@ const TopicOp = <template>
         {{@topic.creator.username}}
       </span>
       <span>
-        {{#if this.badges.length}}
-          {{#each this.badges as |badge|}}
-            <span class="badge">
-              <i class="fa {{badge.icon}}"></i> {{badge.name}}
-            </span>
-          {{/each}}
-        {{else}}
-          <span class="no-badges">No badges available</span>
-        {{/if}}
+        Test
       </span>
     </UserLink>
   </div>
