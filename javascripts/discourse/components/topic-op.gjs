@@ -29,7 +29,7 @@ export default class TopicOpComponent extends Component {
     } catch (error) {
       console.error("Error fetching badges:", error);
       this.badges = []; // Fallback in case of errors
-      setTimeOut(loadBadges, 2000);
+      setTimeout(loadBadges, 2000);
     }
   }
 
