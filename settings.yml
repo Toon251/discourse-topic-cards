@@ -13,6 +13,9 @@ show_activity:
 show_publish_date:
   type: bool
   default: true
+show_badge:
+  type: bool
+  default: false
 set_card_max_height:
   type: bool
   default: true

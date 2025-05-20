@@ -93,30 +93,5 @@ export default apiInitializer("1.39.0", (api) => {
     }
   );
 
-  api.decorateWidget("poster-name:after", (helper) => {
 
-    const user = helper.attrs.user;
-    console.log(user);
-
-    // ดึง username ของ Topic Creator
-    if (user) {
-      const username = user.username;
-
-      // เรียก API ดึง Badge
-      fetch(`/u/${username}.json`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.user.badges && data.user.badges.length) {
-            const badges = data.user.badges.map((badge) => {
-              return `<span class="badge">
-                <i class="fa ${badge.icon}"></i> ${badge.name}
-              </span>`;
-            }).join("");
-
-            // แสดง Badge หลังชื่อผู้สร้าง Topic
-            helper.widget.appendHtmlSafe(badges);
-          }
-        });
-    }
-  });
 });
