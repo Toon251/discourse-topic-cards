@@ -27,7 +27,7 @@ export default class TopicOpComponent extends Component {
     
       this.badges = data.badges; // Assuming `badges` is in the response structure
     } catch (error) {
-      console.error("Error fetching badges:", error);
+    
       this.badges = []; // Fallback in case of errors
       setTimeout("loadBadges", 2000);
     }
@@ -43,6 +43,7 @@ export default class TopicOpComponent extends Component {
         <span> 
           {{#if this.badges.length}}
             {{#each this.badges as |badge|}}
+              <span class="topic-user-badge-list">
               {{#if badge.allow_title}}
                 <span class="topic-user-badge">
                     {{#if badge.image_url}}
@@ -51,6 +52,7 @@ export default class TopicOpComponent extends Component {
                     <span class="topic-badge-name">{{badge.name}}</span>
                 </span>
               {{/if}}
+              </span>
             {{/each}}
           {{/if}}
         </span>
