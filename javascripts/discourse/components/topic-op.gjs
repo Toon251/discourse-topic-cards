@@ -46,7 +46,7 @@ export default class TopicOpComponent extends Component {
               {{#if badge.allow_title}}
                 <span class="user-badge">
                     {{#if badge.image_url}}
-                      <img src="{{badge.image_url}}" class="badge-image" width="25" height="25" alt="{{badge.name}}"/>
+                      <img src="{{badge.image_url}}" class="badge-image" width="30" height="30" alt="{{badge.name}}"/>
                     {{/if}}
                 </span>
               {{/if}}
