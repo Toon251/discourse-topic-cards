@@ -42,8 +42,8 @@ export default class TopicOpComponent extends Component {
         </span>
         <span> 
           {{#if this.badges.length}}
+            <span class="topic-user-badge-list">
             {{#each this.badges as |badge|}}
-              <span class="topic-user-badge-list">
               {{#if badge.allow_title}}
                 <span class="topic-user-badge">
                     {{#if badge.image_url}}
@@ -52,8 +52,8 @@ export default class TopicOpComponent extends Component {
                     <span class="topic-badge-name">{{badge.name}}</span>
                 </span>
               {{/if}}
-              </span>
             {{/each}}
+            </span>
           {{/if}}
         </span>
       </UserLink>
