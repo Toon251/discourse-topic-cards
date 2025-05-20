@@ -276,3 +276,9 @@
     transform: scale(1);
   }
 }
+
+.topic-user-badge {
+  display: flex;
+  justify-content:first baseline;
+  align-items: center;
+}
