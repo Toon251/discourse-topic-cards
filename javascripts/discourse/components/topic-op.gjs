@@ -10,9 +10,7 @@ export default class TopicOpComponent extends Component {
   
   constructor() {
     super(...arguments);
-    if(this.settings.show_badge){
-      this.loadBadges(); // โหลด badges เมื่อ component ถูกเรียก
-    }
+    this.loadBadges(); // โหลด badges เมื่อ component ถูกเรียก
     
   }
 
@@ -46,8 +44,7 @@ export default class TopicOpComponent extends Component {
         <span> 
           {{#if this.badges.length}}
             <span class="topic-user-badge-list">
-            {{#if settings.show_badge}}
-              {{#each this.badges as |badge|}}
+            {{#each this.badges as |badge|}}
                 {{#if badge.allow_title}}
                   <span class="topic-user-badge">
                       {{#if badge.image_url}}
@@ -57,7 +54,6 @@ export default class TopicOpComponent extends Component {
                   </span>
                 {{/if}}
               {{/each}}
-            {{/if}}
             </span>
           {{/if}}
         </span>
