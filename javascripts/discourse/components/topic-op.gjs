@@ -28,7 +28,7 @@ export default class TopicOpComponent extends Component {
       const data = await response.json();
       //console.log(data.badges);
     
-      this.badges = data; // Assuming `badges` is in the response structure
+      this.badges = data.badges; // Assuming `badges` is in the response structure
     } catch (error) {
     
       this.badges = []; // Fallback in case of errors
