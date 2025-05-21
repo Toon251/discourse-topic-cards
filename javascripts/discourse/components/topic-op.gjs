@@ -26,8 +26,9 @@ export default class TopicOpComponent extends Component {
         throw new Error(`Failed to fetch badges: ${response.status}`);
       }
       const data = await response.json();
-      //console.log(data);
+      console.log(data);
       if(data.length >0){
+        console.log(data[0].badges)
         this.badges = data[0].badges; // Assuming `badges` is in the response structure
       }
     
