@@ -20,16 +20,17 @@ export default class TopicOpComponent extends Component {
   async loadBadges() {
     try {
       const username = this.args.topic.creator.username; // Assume user ID is available
-      //const response = await fetch(`/u/${username}.json`); // Replace with your actual API endpoint
-      const response = await fetch(`https://connect-n8n.link360.io/webhook/user-badges?u=${username}`); 
+      const response = await fetch(`/u/${username}.json`); // Replace with your actual API endpoint
+      //const response = await fetch(`https://connect-n8n.link360.io/webhook/user-badges?u=${username}`); 
       if (!response.ok) {
         throw new Error(`Failed to fetch badges: ${response.status}`);
       }
       const data = await response.json();
-      console.log(username, data);
+      //console.log(username, data);
       if(data.length >0){
-        console.log(data[0].badges)
-        this.badges = data[0].badges; // Assuming `badges` is in the response structure
+        //console.log(data[0].badges)
+        //this.badges = data[0].badges; // Assuming `badges` is in the response structure
+        this.badges = data.badges;
       }
     
       
