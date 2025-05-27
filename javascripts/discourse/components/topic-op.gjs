@@ -21,10 +21,10 @@ export default class TopicOpComponent extends Component {
   async loadBadges() {
     try {
       const username = this.args.topic.creator.username;
-      const apiUrl = this.args.apiUrl || this.settings?.apiUrl; // get from args or settings
+      const apiUrl = this.settings?.api_url; // get from args or settings
 
       console.log(apiUrl);
-      const response = await fetch(`${apiUrl}/user/${username}/badges`);
+      /* const response = await fetch(`${apiUrl}/user/${username}/badges`);
       if (!response.ok) {
         throw new Error(`Failed to fetch badges: ${response.status}`);
       }
@@ -33,7 +33,7 @@ export default class TopicOpComponent extends Component {
 
       if (result.success) {
         this.badges = result.data;
-      }
+      }*/
     } catch (error) {
       console.error(error);
       this.badges = [];
