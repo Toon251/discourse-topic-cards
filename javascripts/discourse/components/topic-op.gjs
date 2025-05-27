@@ -7,7 +7,7 @@ import { tracked } from "@glimmer/tracking";
 
 export default class TopicOpComponent extends Component {
   @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
-  var apiUrl = settings.apiUrl;
+  
   
   constructor() {
     super(...arguments);
@@ -20,26 +20,25 @@ export default class TopicOpComponent extends Component {
    */
   async loadBadges() {
     try {
-      const username = this.args.topic.creator.username; // Assume user ID is available
-      //const response = await fetch(`/u/${username}.json`); // Replace with your actual API endpoint
-      // https://connect-app.efinancethai.com/public-api
-      console.log(this.apiUrl)
-      const response = await fetch(`${this.apiUrl}/user/${username}/badges`); 
+      const username = this.args.topic.creator.username;
+      const apiUrl = this.args.apiUrl || this.settings?.apiUrl; // get from args or settings
+
+      console.log(apiUrl);
+      const response = await fetch(`${apiUrl}/user/${username}/badges`);
       if (!response.ok) {
         throw new Error(`Failed to fetch badges: ${response.status}`);
       }
       const result = await response.json();
       console.log(username, result);
 
-      if(result.success){
-        this.badges = result.data; // Assuming `badges` is in the response structure
+      if (result.success) {
+        this.badges = result.data;
       }
-    
-      
     } catch (error) {
-    
-      this.badges = []; // Fallback in case of errors
-      setTimeout("loadBadges", 2000);
+      console.error(error);
+      this.badges = [];
+      // Retry after 2 seconds
+      setTimeout(() => this.loadBadges(), 2000);
     }
     
   }
