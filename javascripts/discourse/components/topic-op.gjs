@@ -23,7 +23,7 @@ export default class TopicOpComponent extends Component {
       const username = this.args.topic.creator.username;
       //const apiUrl = settings; // get from args or settings
 
-      console.log(settings);
+      
       
       if(settings?.api_url){
         const response = await fetch(`${settings?.api_url}/user/${username}/badges`);
@@ -31,7 +31,8 @@ export default class TopicOpComponent extends Component {
           throw new Error(`Failed to fetch badges: ${response.status}`);
         }
         const result = await response.json();
-        console.log(username, result);
+
+        console.log(result);
 
         if (result.success) {
           this.badges = result.data;
