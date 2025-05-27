@@ -21,9 +21,9 @@ export default class TopicOpComponent extends Component {
   async loadBadges() {
     try {
       const username = this.args.topic.creator.username;
-      const apiUrl = this.settings?.api_url; // get from args or settings
+      //const apiUrl = settings; // get from args or settings
 
-      console.log(apiUrl);
+      console.log(settings);
       /* const response = await fetch(`${apiUrl}/user/${username}/badges`);
       if (!response.ok) {
         throw new Error(`Failed to fetch badges: ${response.status}`);
