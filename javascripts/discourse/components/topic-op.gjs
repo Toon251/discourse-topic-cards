@@ -24,16 +24,20 @@ export default class TopicOpComponent extends Component {
       //const apiUrl = settings; // get from args or settings
 
       console.log(settings);
-      /* const response = await fetch(`${apiUrl}/user/${username}/badges`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch badges: ${response.status}`);
-      }
-      const result = await response.json();
-      console.log(username, result);
+      
+      if(settings?.api_url){
+        const response = await fetch(`${settings?.api_url}/user/${username}/badges`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch badges: ${response.status}`);
+        }
+        const result = await response.json();
+        console.log(username, result);
 
-      if (result.success) {
-        this.badges = result.data;
-      }*/
+        if (result.success) {
+          this.badges = result.data;
+        }
+      }
+      
     } catch (error) {
       console.error(error);
       this.badges = [];
