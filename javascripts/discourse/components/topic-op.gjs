@@ -7,6 +7,7 @@ import { tracked } from "@glimmer/tracking";
 
 export default class TopicOpComponent extends Component {
   @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
+  var apiUrl = settings.apiUrl;
   
   constructor() {
     super(...arguments);
@@ -21,16 +22,17 @@ export default class TopicOpComponent extends Component {
     try {
       const username = this.args.topic.creator.username; // Assume user ID is available
       //const response = await fetch(`/u/${username}.json`); // Replace with your actual API endpoint
-      const response = await fetch(`https://connect-n8n.link360.io/webhook/user-badges?u=${username}`); 
+      // https://connect-app.efinancethai.com/public-api
+      console.log(this.apiUrl)
+      const response = await fetch(`${this.apiUrl}/user/${username}/badges`); 
       if (!response.ok) {
         throw new Error(`Failed to fetch badges: ${response.status}`);
       }
-      const data = await response.json();
-      //console.log(username, data);
-      if(data.length >0){
-        //console.log(data[0].badges)
-        this.badges = data[0].badges; // Assuming `badges` is in the response structure
-        //this.badges = data.badges;
+      const result = await response.json();
+      console.log(username, result);
+
+      if(result.success){
+        this.badges = result.data; // Assuming `badges` is in the response structure
       }
     
       

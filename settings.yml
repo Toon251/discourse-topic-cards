@@ -19,3 +19,6 @@ set_card_max_height:
 card_max_height:
   type: integer
   default: 275
+api_url:
+  type: string
+  default: ''
