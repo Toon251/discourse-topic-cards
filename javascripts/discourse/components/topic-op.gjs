@@ -32,7 +32,7 @@ export default class TopicOpComponent extends Component {
         }
         const result = await response.json();
 
-        console.log(username, result);
+        // console.log(username, result);
 
         if (result.success) {
           this.badges = result.data;
