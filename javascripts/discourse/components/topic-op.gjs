@@ -43,7 +43,7 @@ export default class TopicOpComponent extends Component {
       console.error(error);
       this.badges = [];
       // Retry after 2 seconds
-      setTimeout(() => this.loadBadges(), 2000);
+      // setTimeout(() => this.loadBadges(), 2000);
     }
     
   }
